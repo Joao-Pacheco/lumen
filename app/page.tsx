@@ -41,7 +41,7 @@ export default function Home() {
     const totalDays = currentDate.getFullYear() % 4 === 0 ? 366 : 365;
     setProgress(Math.floor((dayOfYear / totalDays) * 100));
     setDailyText(findDailyText(currentDate));
-  }, [currentDate]);
+  }, [currentDate, findDailyText]);
 
   return (
     <div className="p-5 flex flex-col items-center">

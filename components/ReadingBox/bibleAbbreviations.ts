@@ -1,4 +1,4 @@
-export const bibleAbbreviations: { [x: string]: any } = {
+export const bibleAbbreviations: { [x: string]: string } = {
   // old testament
   Gn: "GEN",
   Êx: "EXO",

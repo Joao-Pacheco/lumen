@@ -1,6 +1,6 @@
 import useStoreCurrentDate from "@/store/useStoreCurrentDate";
 
-export default function footer() {
+export default function Footer() {
   const { currentDate, setCurrentDate } = useStoreCurrentDate();
 
   function goToNextDay(direction: "back" | "forward") {

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import ProgressBar from "../components/ProgressBar";
 import dataBible from "../public/plan/plan365.json";
 import ReadingBox from "@/components/ReadingBox";
@@ -17,17 +17,20 @@ export default function Home() {
     Proverbs: "",
   });
 
-  function findDailyText(data: Date) {
-    const newDate = transformDate(data);
-    return (dataBible as Plan365)[newDate.month][parseInt(newDate.day)];
-  }
-
-  function transformDate(date: Date) {
+  const transformDate = useCallback((date: Date) => {
     const month = date.toLocaleString("pt-BR", { month: "long" });
     const day = String(date.getDate()).padStart(2, "0");
     setDataToShow({ month, day });
     return { month, day };
-  }
+  }, []);
+
+  const findDailyText = useCallback(
+    (data: Date) => {
+      const newDate = transformDate(data);
+      return (dataBible as Plan365)[newDate.month][parseInt(newDate.day)];
+    },
+    [transformDate]
+  );
 
   function getDayOfYear(date: Date) {
     const start = new Date(date.getFullYear(), 0, 0);

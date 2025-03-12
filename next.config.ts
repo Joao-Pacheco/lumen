@@ -5,11 +5,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  pwa: {
-    dest: "public",
-    register: true,
-    skipWaiting: true,
-  },
 };
 
 module.exports = nextConfig;

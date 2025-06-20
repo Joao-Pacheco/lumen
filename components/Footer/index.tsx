@@ -1,4 +1,4 @@
-import useStoreCurrentDate from "@/store/useStoreCurrentDate";
+import useStoreCurrentDate from "@/stores/useStoreCurrentDate";
 
 export default function Footer() {
   const { currentDate, setCurrentDate } = useStoreCurrentDate();
@@ -15,20 +15,20 @@ export default function Footer() {
   return (
     <div className="fixed bottom-5 w-full flex justify-between px-5">
       <button
-        className="bg-[#2e3e36] text-white rounded-full w-10 h-10 flex items-center justify-center"
+        className="color-primary text-white rounded-full w-10 h-10 flex items-center justify-center"
         onClick={() => goToNextDay("back")}
       >
         ‹
       </button>
 
       <button
-        className="bg-[#2e3e36] text-white rounded-md w-25 h-10 flex items-center justify-center"
+        className="color-primary text-white rounded-md w-25 h-10 flex items-center justify-center"
         onClick={() => goToToday()}
       >
         HOJE
       </button>
       <button
-        className="bg-[#2e3e36] text-white rounded-full w-10 h-10 flex items-center justify-center"
+        className="color-primary text-white rounded-full w-10 h-10 flex items-center justify-center"
         onClick={() => goToNextDay("forward")}
       >
         ›

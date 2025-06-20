@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @font-face {
   font-family: "SF Pro";
   src: url("/fonts/SF Pro Text/SF-Pro-Text-Regular.otf") format("otf");
@@ -15,28 +21,27 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-background: #fff;
+  --color-primary: #2e3e36;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --color-background: #2e3e36;
+  --color-primary: #202e27;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #ffffff;
-    --foreground: #0a0a0a;
+@layer utilities {
+  .color-primary {
+    background-color: var(--color-primary);
+  }
+
+  .bg-primary {
+    background-color: var(--color-background);
   }
 }
 
 body {
   font-family: "SF Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--background);
-  color: var(--foreground);
   max-width: 400px;
   margin: 0 auto;
   position: relative;

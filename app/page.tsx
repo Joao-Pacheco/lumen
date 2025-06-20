@@ -1,12 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProgressBar from "../components/ProgressBar";
+import ThemeButton from "../components/ThemeButton";
 import dataBible from "../public/plan/plan365.json";
 import ReadingBox from "@/components/ReadingBox";
-import useStoreCurrentDate from "@/store/useStoreCurrentDate";
+import useStoreCurrentDate from "@/stores/useStoreCurrentDate";
 import Footer from "@/components/Footer";
 import { getStorage, setStorage } from "@/lib/storage-handler";
 import { STORAGE_KEY } from "@/common/const";
+import useTheme from "@/hooks/useTheme";
+import "./globals.css";
 
 export default function Home() {
   const [firstLoad, setFirstLoad] = useState(true);
@@ -19,6 +22,8 @@ export default function Home() {
     Psalms: "",
     Proverbs: "",
   });
+
+  useTheme();
 
   function transformDate(date: Date) {
     const month = date.toLocaleString("pt-BR", { month: "long" });
@@ -59,12 +64,13 @@ export default function Home() {
     setProgress(Math.floor((dayOfYear / totalDays) * 100));
 
     setStorage(STORAGE_KEY, currentDate.toString());
-  }, [currentDate]);
+  }, [currentDate, firstLoad]);
 
   return (
-    <div className="p-5 flex flex-col items-center">
+    <div className="p-5 flex flex-col items-center h-screen bg-primary">
       <ProgressBar progress={progress} />
-      <p className="text-4xl font-light my-4">
+      <ThemeButton />
+      <p className="text-4xl font-light my-4 dark:text-white">
         {dataToShow.day} de {dataToShow.month}
       </p>
 

@@ -27,7 +27,7 @@ export default function ReadingBox({ Old, New, Psalms, Proverbs }: DailyText) {
       ].map(({ key, text }) => (
         <button
           key={key}
-          className="bg-[#2e3e36] text-white px-4 py-2 rounded-md w-52 text-center"
+          className="color-primary text-white px-4 py-2 rounded-md w-52 text-center"
           onClick={() => handleClick(text)}
         >
           <p className="text-lg">{text}</p>
